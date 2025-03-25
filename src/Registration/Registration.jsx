@@ -5,7 +5,7 @@ import Select from "../Select/Select"
 const Registration = () => {
 
     const [formdata, setFormData] = useState({})
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState('')
 
     const handlechange = (event) => {
         const inputval = event.target.value
@@ -34,14 +34,14 @@ const Registration = () => {
         if (!formdata.gender) {
             localError = { ...localError, gender: "please choose a select gender" }
         }
-        if(!formdata.month) {
-            localError = {...localError , month: "please enter your month"}
+        if (!formdata.month) {
+            localError = { ...localError, month: "please enter your month" }
         }
-        if(!formdata.date) {
-            localError = {...localError , date: "please enter your date"}
+        if (!formdata.date) {
+            localError = { ...localError, date: "please enter your date" }
         }
-        if(!formdata.check) {
-            localError = {...localError , check: "please enter your check"}
+        if (!formdata.check) {
+            localError = { ...localError, check: "please select your check" }
         }
 
         setErrors(localError)
@@ -55,15 +55,15 @@ const Registration = () => {
             <div className="flex gap-10">
                 <div>
                     <label>First name</label>
-                    <Input type="text" onChange={handlechange} value={formdata.firstname} name='firstname' errors={errors} />
+                    <Input type="text" onChange={handlechange} value={formdata?.firstname} name='firstname' errors={errors} />
                 </div>
                 <div>
                     <label>Middle name</label>
-                    <Input type="text" onChange={handlechange} value={formdata.middlename} name='middlename' errors={errors} />
+                    <Input type="text" onChange={handlechange} value={formdata?.middlename} name='middlename' errors={errors} />
                 </div>
                 <div>
                     <label>Last name</label>
-                    <Input type="text" onChange={handlechange} value={formdata.lastname} name='lastname' errors={errors} />
+                    <Input type="text" onChange={handlechange} value={formdata?.lastname} name='lastname' errors={errors} />
                 </div>
             </div> <br />
             <div className="flex gap-10">
@@ -72,26 +72,26 @@ const Registration = () => {
                     <div className="flex gap-10">
                         <div>
                             <label>Month</label> <br />
-                            <Input type="month" className="border-1" onchange={handlechange} value={formdata.month} name={'month'} errors={errors} />
+                            <Input type="month" className="border-1" onchange={handlechange} value={formdata?.month} name={'month'} errors={errors} />
                         </div>
                         <div>
                             <label>Date</label> <br />
-                            <Input type="date" className="border-1" onchange={handlechange} value={formdata.date} name={'date'} errors={errors} />
+                            <Input type="date" className="border-1" onchange={handlechange} value={formdata?.date} name={'date'} errors={errors} />
                         </div>
                     </div>
                 </div>
                 <div>
                     <h1 className="text-2xl">Gender :</h1>
-                    <Select onChange={handlechange} value={formdata.gender}>
+                    <Select onChange={handlechange} value={formdata?.gender}>
                     </Select>
-                    <div className="text-red-500">{errors.gender}</div>
+                    <div className="text-red-500">{errors?.gender}</div>
                 </div>
             </div> <br />
-            <div> 
+            <div>
                 <h1 className="text-2xl">Hobby :</h1>
-                <input type="checkbox" onChange={handlechange} value={formdata.check} className="mt-5" /> Music <br />
-                <input type="checkbox" onChange={handlechange} value={formdata.check} /> Dancing <br />
-                <input type="checkbox" onChange={handlechange} value={formdata.check} /> Playing 
+                <input type="checkbox" onChange={handlechange} value={formdata?.check} errors={check} className="mt-5" /> Music <br />
+                <input type="checkbox" onChange={handlechange} value={formdata?.check} errors={check}/> Dancing <br />
+                <input type="checkbox" onChange={handlechange} value={formdata?.check} errors={check}/> Playing
                 <div className="text-red-500">{errors.check}</div>
             </div> <br /> <br />
             <button type="submit" onClick={handlesubmit} className="border-1 p-2">Submit</button>
