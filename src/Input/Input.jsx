@@ -7,7 +7,7 @@ const Input = ({ type, value, name, onchange, errors }) => {
                 name={name}
                 onChange={onchange}
                 errors={errors}
-                className="border-1 p-2"
+                className="border-1 p-2 w-sm"
             />
             {
                 errors?.[name] !== "" && (
